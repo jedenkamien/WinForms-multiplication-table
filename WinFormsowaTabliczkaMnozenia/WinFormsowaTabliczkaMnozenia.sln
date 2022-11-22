@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsowaTabliczkaMnozenia", "WinFormsowaTabliczkaMnozenia\WinFormsowaTabliczkaMnozenia.csproj", "{F6A80C64-7265-4296-9C1B-765DE9D7AEAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6A80C64-7265-4296-9C1B-765DE9D7AEAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6A80C64-7265-4296-9C1B-765DE9D7AEAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6A80C64-7265-4296-9C1B-765DE9D7AEAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6A80C64-7265-4296-9C1B-765DE9D7AEAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DEB0AC61-B6DC-49E1-81C8-1633D50AD15C}
+	EndGlobalSection
+EndGlobal
