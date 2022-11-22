@@ -259,6 +259,7 @@
             this.checkButton.TabIndex = 25;
             this.checkButton.Text = "Sprawdź!";
             this.checkButton.UseVisualStyleBackColor = true;
+            this.checkButton.Click += new System.EventHandler(this.checkButton_Click);
             // 
             // Form1
             // 

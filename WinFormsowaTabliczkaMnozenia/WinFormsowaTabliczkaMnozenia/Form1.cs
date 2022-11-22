@@ -42,22 +42,22 @@ namespace WinFormsowaTabliczkaMnozenia
             textBoxD3.Text = string.Empty;
             textBoxD4.Text = string.Empty;
 
-            textBoxA1.BackColor = Color.Transparent;
-            textBoxA2.BackColor = Color.Transparent;
-            textBoxA3.BackColor = Color.Transparent;
-            textBoxA4.BackColor = Color.Transparent;
-            textBoxB1.BackColor = Color.Transparent;
-            textBoxB2.BackColor = Color.Transparent;
-            textBoxB3.BackColor = Color.Transparent;
-            textBoxB4.BackColor = Color.Transparent;
-            textBoxC1.BackColor = Color.Transparent;
-            textBoxC2.BackColor = Color.Transparent;
-            textBoxC3.BackColor = Color.Transparent;
-            textBoxC4.BackColor = Color.Transparent;
-            textBoxD1.BackColor = Color.Transparent;
-            textBoxD2.BackColor = Color.Transparent;
-            textBoxD3.BackColor = Color.Transparent;
-            textBoxD4.BackColor = Color.Transparent;
+            textBoxA1.BackColor = Color.White;
+            textBoxA2.BackColor = Color.White;
+            textBoxA3.BackColor = Color.White;
+            textBoxA4.BackColor = Color.White;
+            textBoxB1.BackColor = Color.White;
+            textBoxB2.BackColor = Color.White;
+            textBoxB3.BackColor = Color.White;
+            textBoxB4.BackColor = Color.White;
+            textBoxC1.BackColor = Color.White;
+            textBoxC2.BackColor = Color.White;
+            textBoxC3.BackColor = Color.White;
+            textBoxC4.BackColor = Color.White;
+            textBoxD1.BackColor = Color.White;
+            textBoxD2.BackColor = Color.White;
+            textBoxD3.BackColor = Color.White;
+            textBoxD4.BackColor = Color.White;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -68,6 +68,51 @@ namespace WinFormsowaTabliczkaMnozenia
         private string WylosujLiczbe()
         {
             return losowacz.Next(10).ToString();
+        }
+
+        private void checkButton_Click(object sender, EventArgs e)
+        {
+            var textBoxes = new List<TextBox> {
+                textBoxA1,
+                textBoxA2,
+                textBoxA3,
+                textBoxA4,
+                textBoxB1,
+                textBoxB2,
+                textBoxB3,
+                textBoxB4,
+                textBoxC1,
+                textBoxC2,
+                textBoxC3,
+                textBoxC4,
+                textBoxD1,
+                textBoxD2,
+                textBoxD3,
+                textBoxD4
+            };
+
+            foreach (var textBox in textBoxes)
+            {
+                SprawdzWynikDzialania(textBox);
+            }
+        }
+
+        private void SprawdzWynikDzialania(TextBox textBox)
+        {
+            var name = textBox.Name;
+            var columnName = name.Substring(name.Length-2, 1);
+            var rowName = name.Substring(name.Length-1, 1);
+
+            var labels = new List<Label> { label1, label2, label3, label4, labelA, labelB, labelC, labelD };
+
+            var labelCol = labels.Where(l => l.Name == "label" + columnName).First();
+            var labelRow = labels.Where(l => l.Name == "label" + rowName).First();
+
+            var a = int.Parse(labelCol.Text);
+            var b = int.Parse(labelRow.Text);
+
+            if (!(a*b == int.Parse(textBox.Text)))
+                textBox.BackColor = Color.Red;
         }
     }
 }
