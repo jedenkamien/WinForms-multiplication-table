@@ -143,6 +143,7 @@ namespace WinFormsowaTabliczkaMnozenia
                 return false;
             }
 
+            textBox.BackColor = Color.White;
             return true;
         }
 
