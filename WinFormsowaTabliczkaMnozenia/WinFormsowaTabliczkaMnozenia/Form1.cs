@@ -3,6 +3,8 @@ namespace WinFormsowaTabliczkaMnozenia
     public partial class Form1 : Form
     {
         private readonly Random losowacz = new();
+        private DateTime testStart;
+        private DateTime testEnd;
 
         public Form1()
         {
@@ -11,10 +13,61 @@ namespace WinFormsowaTabliczkaMnozenia
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            ResetujFormularz();
         }
 
         private void resetButton_Click(object sender, EventArgs e)
+        {
+            ResetujFormularz();
+        }
+
+        private void checkButton_Click(object sender, EventArgs e)
+        {
+            testEnd = DateTime.Now;
+            time.Text = $"Twój czas to: {Convert.ToInt32((testEnd - testStart).TotalSeconds).ToString()} sekundy!";
+
+            var wynik = 0;
+            
+            var textBoxes = new List<TextBox> {
+                textBoxA1,
+                textBoxA2,
+                textBoxA3,
+                textBoxA4,
+                textBoxB1,
+                textBoxB2,
+                textBoxB3,
+                textBoxB4,
+                textBoxC1,
+                textBoxC2,
+                textBoxC3,
+                textBoxC4,
+                textBoxD1,
+                textBoxD2,
+                textBoxD3,
+                textBoxD4
+            };
+
+            foreach (var textBox in textBoxes)
+            {
+                var czyPoprawnyWynikDzialania = SprawdzWynikDzialania(textBox);
+                if (czyPoprawnyWynikDzialania)
+                    wynik++;
+            }
+
+            score.Text = "Twój wynik to: " + wynik + " poprawnych odpowiedzi.";
+        }
+
+        private void timerStart_Click(object sender, EventArgs e)
+        {
+            testStart = DateTime.Now;
+        }
+
+        private void timerStop_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ResetujFormularz()
         {
             labelA.Text = WylosujLiczbe();
             labelB.Text = WylosujLiczbe();
@@ -58,50 +111,23 @@ namespace WinFormsowaTabliczkaMnozenia
             textBoxD2.BackColor = Color.White;
             textBoxD3.BackColor = Color.White;
             textBoxD4.BackColor = Color.White;
-        }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+            time.Text = "";
+            score.Text = "";
 
+            testStart = DateTime.Now;
         }
 
         private string WylosujLiczbe()
         {
-            return losowacz.Next(10).ToString();
+            return losowacz.Next(3, 11).ToString();
         }
 
-        private void checkButton_Click(object sender, EventArgs e)
-        {
-            var textBoxes = new List<TextBox> {
-                textBoxA1,
-                textBoxA2,
-                textBoxA3,
-                textBoxA4,
-                textBoxB1,
-                textBoxB2,
-                textBoxB3,
-                textBoxB4,
-                textBoxC1,
-                textBoxC2,
-                textBoxC3,
-                textBoxC4,
-                textBoxD1,
-                textBoxD2,
-                textBoxD3,
-                textBoxD4
-            };
-
-            foreach (var textBox in textBoxes)
-            {
-                SprawdzWynikDzialania(textBox);
-            }
-        }
-
-        private void SprawdzWynikDzialania(TextBox textBox)
+        private bool SprawdzWynikDzialania(TextBox textBox)
         {
             var name = textBox.Name;
-            var columnName = name.Substring(name.Length-2, 1);
-            var rowName = name.Substring(name.Length-1, 1);
+            var columnName = name.Substring(name.Length - 2, 1);
+            var rowName = name.Substring(name.Length - 1, 1);
 
             var labels = new List<Label> { label1, label2, label3, label4, labelA, labelB, labelC, labelD };
 
@@ -111,8 +137,18 @@ namespace WinFormsowaTabliczkaMnozenia
             var a = int.Parse(labelCol.Text);
             var b = int.Parse(labelRow.Text);
 
-            if (!(a*b == int.Parse(textBox.Text)))
+            if (!(a * b == int.Parse(textBox.Text)))
+            {
                 textBox.BackColor = Color.Red;
+                return false;
+            }
+
+            return true;
+        }
+
+        private void score_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
