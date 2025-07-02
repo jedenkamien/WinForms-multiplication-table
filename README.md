@@ -1,1 +1,1 @@
-# winformsowa-tabliczka-mnozenia
+# WinForms multiplication table
