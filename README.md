@@ -1,1 +1,1 @@
-# WinForms multiplication table
+# WinForms multiplication table PL
